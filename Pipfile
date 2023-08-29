@@ -5,8 +5,12 @@ name = "pypi"
 
 [packages]
 django = "*"
+scikit-learn = "*"
+pandas = "*"
+seaborn = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.9"
