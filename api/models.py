@@ -9,4 +9,4 @@ class Uang(models.Model):
     red_freq = models.IntegerField()
     green_freq = models.IntegerField()
     blue_freq = models.IntegerField()
-    value = models.CharField(max_length=20)
+    value = models.PositiveIntegerField()
