@@ -1,11 +1,11 @@
 import joblib
 import pandas as pd
 
-def calculate(jsonValue):
+def calculate(red, green, blue):
     data = {
-        'Red Freq': [jsonValue.red],
-        'Green Freq': [jsonValue.green],
-        'Blue Freq': [jsonValue.blue]
+        'Red Freq': [red],
+        'Green Freq': [green],
+        'Blue Freq': [blue]
     }
     df = pd.DataFrame(data=data)
     model = joblib.load('model.joblib')
