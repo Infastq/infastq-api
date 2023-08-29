@@ -15,7 +15,7 @@ def say_hello(request):
 def calculate(request):
     try:
         request_data = json.loads(request.body.decode('utf-8'))
-        value = calculate(request_data['red'], request_data['green'], request_data['blue'])
+        value = ml_model.calculate(request_data['red'], request_data['green'], request_data['blue'])
 
         # Create a new record in the Uang model
         new_uang_record = models.Uang.objects.create(
