@@ -8,6 +8,8 @@ django = "*"
 scikit-learn = "*"
 pandas = "*"
 seaborn = "*"
+djangorestframework = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 ipykernel = "*"

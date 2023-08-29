@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
@@ -75,10 +74,15 @@ WSGI_APPLICATION = 'infastq.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'infastq',
+        'USER': 'postgres',
+        'PASSWORD': '123Haidar!',
+        'HOST': 'localhost',  # Change this to your PostgreSQL server's host if it's not local
+        'PORT': '5432',       # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation
