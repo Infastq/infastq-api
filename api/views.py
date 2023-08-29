@@ -50,3 +50,6 @@ def get_total_uang(request):
         'total_uang': total_uang,
     }
     return JsonResponse(jsonResp)
+
+def index(request):
+    return render(request, 'index.html')

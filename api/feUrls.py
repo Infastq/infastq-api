@@ -1,6 +1,6 @@
 from django.urls import path
-from . import feViews
+from . import views
 
 urlpatterns = [
-  path('index', feViews.index),
+  path('index/', views.index, name='index'),
 ]

@@ -7,4 +7,4 @@ import os
 from rest_framework.decorators import api_view
 
 def index(request):
-    return render(request, 'index.html', {})
+    return render(request, 'index.html')
