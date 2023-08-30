@@ -5,16 +5,14 @@ import { useEffect, useState } from "react"
 function App() {
 
   const [summary, setSummary] = useState(1)
-  
-  console.log(getSummary());
 
-  // useEffect(() => {
-  //   getSummary().then((res) => {
-  //     setSummary(res.data.total_uang)
-  //   }).catch((err) => {
-  //     console.log(err)
-  //   })
-  // },[summary])
+  useEffect(() => {
+    getSummary().then((res) => {
+      setSummary(res.data.total_uang)
+    }).catch((err) => {
+      console.log(err)
+    })
+  },[summary])
 
   return (
     <div className="bg-[rgba(0,0,0,0.2)] bg-cover w-screen h-screen">
