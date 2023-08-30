@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'infastq.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '<PGDATABASE>',
-        'USER': '<PGUSER>',
-        'PASSWORD': '<PGPASSWORD>',
-        'HOST': '<PGHOST>',  # Change this to your PostgreSQL server's host if it's not local
-        'PORT': '<PGPORT>',       # Default PostgreSQL port
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'PAScZ4b9598ZoKnAcplI',
+        'HOST': 'containers-us-west-78.railway.app',  # Change this to your PostgreSQL server's host if it's not local
+        'PORT': '5539',       # Default PostgreSQL port
     }
 }
 
