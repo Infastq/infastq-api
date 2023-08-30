@@ -1,2 +1,2 @@
 # infastq
- api untuk aplikasi infastq
+ api untuk aplikasi infastq.
