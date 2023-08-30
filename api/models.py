@@ -10,3 +10,8 @@ class Uang(models.Model):
     green_freq = models.IntegerField()
     blue_freq = models.IntegerField()
     value = models.PositiveIntegerField()
+
+class Wifi(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    ssid = models.CharField(max_length=30)
+    password = models.CharField(max_length=70)

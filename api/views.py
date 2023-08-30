@@ -51,5 +51,22 @@ def get_total_uang(request):
     }
     return JsonResponse(jsonResp)
 
+@api_view(['DELETE'])
+def clear(request):
+    try:
+        # Delete all records from the Uang model
+        models.Uang.objects.all().delete()
+
+        jsonResp = {
+            'status': 'success',
+            'message': 'All records deleted',
+        }
+    except Exception as e:
+        jsonResp = {
+            'status': 'error',
+            'message': str(e),
+        }
+    return JsonResponse(jsonResp)
+
 def index(request):
     return render(request, 'index.html')
