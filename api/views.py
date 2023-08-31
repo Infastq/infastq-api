@@ -46,6 +46,8 @@ def calculate(request):
 @api_view(['GET'])
 def get_total_uang(request):
     total_uang = models.Uang.objects.aggregate(models.Sum('value'))['value__sum']
+    if total_uang is None:
+        total_uang = 0
     jsonResp = {
         'total_uang': total_uang,
     }
