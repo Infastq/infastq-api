@@ -5,11 +5,14 @@ from . import serializers, ml_model, models, utils
 import json
 import base64
 import os
+import requests
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, status, viewsets
 import numpy as np
+import traceback
+from django.conf import settings
 
 class UploadImageViewSet(viewsets.ViewSet):
     def create(self, request):
@@ -93,13 +96,22 @@ def clear(request):
         }
     return JsonResponse(jsonResp)
 
+@api_view(['POST'])
 def convert_image_to_r5g6b5(request):
     if request.method == 'POST':
         try:
-            image_file = request.FILES['image']  # Assuming your file input is named 'image'
+            if json.loads(request.body.decode('utf-8')).get('python') == 1:
+                img_link = os.path.join(settings.MEDIA_ROOT, 'uploads/images/qr', 'python.jpg')
+                with open(img_link, 'rb') as image_file:
+                    image_data = image_file.read()
+            else:
+                image_file = request.data.get('image')  # Assuming your file input is named 'image'
+                if image_file:
+                    image_data = image_file.read()
+                else:
+                    return JsonResponse({"error": "No image file provided"}, status=400)
             if image_file:
                 # Read the uploaded image data
-                image_data = image_file.read()
 
                 # Convert image data to 16-bit RGB array
                 array = utils.convert_to_r5g6b5(image_data)
@@ -114,7 +126,7 @@ def convert_image_to_r5g6b5(request):
             else:
                 return JsonResponse({"error": "No image file provided"}, status=400)
         except Exception as e:
-            return JsonResponse({"error": f"Error processing image: {str(e)}"}, status=500)
+            return JsonResponse({"error": f"Error processing image: {str(e)}\n{traceback.format_exc()}"}, status=500)
     else:
         return JsonResponse({"error": "Invalid request method"}, status=405)
 

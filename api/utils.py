@@ -31,7 +31,7 @@ def convert_to_r5g6b5(image):
     # Get the pixel data as a NumPy array
     img_array = np.array(img_rgb565)
     
-    width, height = img.size
+    width, height = img_rgb565.size
 
     rgb565_array = []
     for y in range(height):
