@@ -10,3 +10,8 @@ class WifiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wifi
         fields = '__all__'
+
+class UploadedImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UploadedImage
+        fields = ('image')
