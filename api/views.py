@@ -97,7 +97,7 @@ def clear(request):
     return JsonResponse(jsonResp)
 
 @api_view(['POST'])
-def convert_image_to_r5g6b5(request):
+def convert_image_to_r5g6b5(request, id1, id2):
     if request.method == 'POST':
         try:
             if json.loads(request.body.decode('utf-8')).get('python') == 1:
@@ -116,11 +116,17 @@ def convert_image_to_r5g6b5(request):
                 # Convert image data to 16-bit RGB array
                 array = utils.convert_to_r5g6b5(image_data)
 
+                if id1 < 0:
+                    id1 = 0
+                if id2 > len(array):
+                    id2 = len(array)
+
+
                 # Optionally, encode the array as base64 if needed
                 # base64_image_data = base64.b64encode(array.tobytes()).decode('utf-8')
-
+                subarray = array[id1:id2]
                 return JsonResponse({
-                    "data": array,
+                    "data": subarray,
                     "message": "Image uploaded successfully"
                 })
             else:
