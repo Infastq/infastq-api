@@ -136,7 +136,15 @@ def convert_image_to_r5g6b5(request, id1, id2):
     else:
         return JsonResponse({"error": "Invalid request method"}, status=405)
     
+latitude = 0.0
+longitude = 0.0
 
+class GPSView:
+    def get(self, request):
+        return get_gps_data(request)
+    def post(self, request):
+        return post_gps_data(request)
+    
 @api_view(['POST'])
 def post_gps_data(request):
     try:
@@ -145,9 +153,23 @@ def post_gps_data(request):
             "latitude": request_data["latitude"],
             "longitude": request_data["longitude"]
         }
+        latitude = request_data['latitude']
+        longitude = request_data["longitude"]
         return JsonResponse(jsonResp, status=200)
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+
+@api_view(['GET'])
+def get_gps_data(request):
+    try:
+        request_data = json.loads(request.body.decode('utf-8'))
+        jsonResp = {
+            "latitude": latitude,
+            "longitude": longitude
+        }
+        return JsonResponse(jsonResp, status=200)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)   
 
 def index(request):
     return render(request, 'index.html')
