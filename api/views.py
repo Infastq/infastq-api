@@ -156,12 +156,14 @@ def gps_data(request):
             return JsonResponse({"error": str(e)}, status=500)
     elif request.method == 'GET':
         try:
-            request_data = json.loads(request.body.decode('utf-8'))
-            jsonResp = {
-                "latitude": latitude,
-                "longitude": longitude
-            }
-            return JsonResponse(jsonResp, status=200)
+            if latitude is not None and longitude is not None:
+                json_resp = {
+                    "latitude": latitude,
+                    "longitude": longitude
+                }
+                return Response(json_resp, status=status.HTTP_200_OK)
+            else:
+                return Response({"error": "GPS data not available"}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
 
