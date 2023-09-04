@@ -135,6 +135,19 @@ def convert_image_to_r5g6b5(request, id1, id2):
             return JsonResponse({"error": f"Error processing image: {str(e)}\n{traceback.format_exc()}"}, status=500)
     else:
         return JsonResponse({"error": "Invalid request method"}, status=405)
+    
+
+@api_view(['POST'])
+def post_gps_data(request):
+    try:
+        request_data = json.loads(request.body.decode('utf-8'))
+        jsonResp = {
+            "latitude": request_data["latitude"],
+            "longitude": request_data["longitude"]
+        }
+        return JsonResponse(jsonResp, status=200)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
 
 def index(request):
     return render(request, 'index.html')
