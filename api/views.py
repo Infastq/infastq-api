@@ -136,9 +136,9 @@ def convert_image_to_r5g6b5(request, id1, id2):
     else:
         return JsonResponse({"error": "Invalid request method"}, status=405)
     
-latitude = None
-longitude = None
-    
+latitude = -6.878934
+longitude = 107.612385
+  
 @api_view(['POST', 'GET'])
 def gps_data(request):
     global latitude, longitude
@@ -167,6 +167,25 @@ def gps_data(request):
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
 
+# for demo purpose
+lat_masjid = -6.922241
+lon_masjid = 107.607020
+
+@api_view(['GET'])
+def check_out_of_range(request):
+    request_data = json.loads(request.body.decode('utf-8'))
+    global latitude, longitude, lat_masjid, lon_masjid
+    distance = 0
+    try:
+        distance = utils.distance(latitude, longitude, lat_masjid, lon_masjid)
+    except Exception as e:
+        return JsonResponse({"error" : f"calculation error : {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    # threshold 2 km
+    if distance > 2:
+        return JsonResponse({"warning": "Kotak amal di luar jangkauan", "distance" : distance}, status=status.HTTP_200_OK)
+    else:
+        return JsonResponse({"distance": distance}, status=status.HTTP_200_OK)
 
 def index(request):
     return render(request, 'index.html')

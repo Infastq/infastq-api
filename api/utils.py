@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 from io import BytesIO
 import requests
+import math
 
 def convert_pixel_to_r5g6b5(pixel):
     r, g, b = pixel
@@ -45,3 +46,16 @@ def convert_to_r5g6b5(image):
 
     
     return rgb565_array
+
+def distance(lat1, long1, lat2, long2):
+    lat1 = math.radians(lat1)
+    long1 = math.radians(long1)
+    lat2 = math.radians(lat2)
+    long2 =  math.radians(long2)
+
+    dlong = long2 - long1
+    dlat = lat2 - lat1
+    a = math.sin(dlat/2)**2 + math.cos(lat1)*math.cos(lat2)*math.sin(dlong/2)**2
+    c = 2 * math.asin(math.sqrt(a))
+    r = 6371
+    return (c*r)
