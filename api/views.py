@@ -173,7 +173,6 @@ lon_masjid = 107.607020
 
 @api_view(['GET'])
 def check_out_of_range(request):
-    request_data = json.loads(request.body.decode('utf-8'))
     global latitude, longitude, lat_masjid, lon_masjid
     distance = 0
     try:
