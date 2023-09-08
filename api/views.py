@@ -240,34 +240,75 @@ def location_masjid(request):
             }
             return JsonResponse(jsonResp, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT'])
 def location_masjid_by_id(request, id):
-    try:
-        data_masjid = models.Masjid.objects.get(id=id)
-        serialized_masjid = serializers.MasjidSerializer(data_masjid).data
+    if request.method == 'GET':
+        try:
+            data_masjid = models.Masjid.objects.get(id=id)
+            serialized_masjid = serializers.MasjidSerializer(data_masjid).data
 
-        jsonResp = {
-            "status": "success",
-            "message": "Data Masjid Diambil",
-            "data": serialized_masjid
-        }
-        return JsonResponse(jsonResp, status=status.HTTP_200_OK)
-    except models.Masjid.DoesNotExist:
-        return JsonResponse(
-            {
+            jsonResp = {
+                "status": "success",
+                "message": "Data Masjid Diambil",
+                "data": serialized_masjid
+            }
+            return JsonResponse(jsonResp, status=status.HTTP_200_OK)
+        except models.Masjid.DoesNotExist:
+            return JsonResponse(
+                {
+                    "status": "error",
+                    "message": "Data Masjid dengan ID yang diberikan tidak ditemukan",
+                    "data": None
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Exception as e:
+            jsonResp = {
                 "status": "error",
-                "message": "Data Masjid dengan ID yang diberikan tidak ditemukan",
+                "message": str(e),
                 "data": None
-            },
-            status=status.HTTP_404_NOT_FOUND
-        )
-    except Exception as e:
-        jsonResp = {
-            "status": "error",
-            "message": str(e),
-            "data": None
-        }
-        return JsonResponse(jsonResp, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            }
+            return JsonResponse(jsonResp, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    elif request.method == 'PUT':
+        try:
+            data_masjid = models.Masjid.objects.get(id=id)
+            request_data = json.loads(request.body.decode('utf-8'))
+
+            # Update the Masjid object with the new data
+            data_masjid.nama = request_data.get("nama", data_masjid.nama)
+            data_masjid.alamat = request_data.get("alamat", data_masjid.alamat)
+            data_masjid.luas = request_data.get("luas", data_masjid.luas)
+            data_masjid.latitude = request_data.get("latitude", data_masjid.latitude)
+            data_masjid.longitude = request_data.get("longitude", data_masjid.longitude)
+
+            # Save the updated object
+            data_masjid.save()
+
+            serialized_masjid = serializers.MasjidSerializer(data_masjid).data
+
+            jsonResp = {
+                "status": "success",
+                "message": "Data Masjid Updated",
+                "data": serialized_masjid
+            }
+            return JsonResponse(jsonResp, status=status.HTTP_200_OK)
+        except models.Masjid.DoesNotExist:
+            return JsonResponse(
+                {
+                    "status": "error",
+                    "message": "Data Masjid dengan ID yang diberikan tidak ditemukan",
+                    "data": None
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Exception as e:
+            jsonResp = {
+                "status": "error",
+                "message": str(e),
+                "data": None
+            }
+            return JsonResponse(jsonResp, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 def index(request):
     return render(request, 'index.html')
