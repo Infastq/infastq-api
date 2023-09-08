@@ -278,9 +278,9 @@ def location_masjid_by_id(request, id):
             # Update the Masjid object with the new data
             data_masjid.nama = request_data.get("nama", data_masjid.nama)
             data_masjid.alamat = request_data.get("alamat", data_masjid.alamat)
-            data_masjid['luas'] = request_data.get("luas", data_masjid['luas'])
-            data_masjid['latitude'] = request_data.get("latitude", data_masjid['latitude'])
-            data_masjid['longitude'] = request_data.get("longitude", data_masjid['longitude'])
+            data_masjid.luas = request_data.get("luas", data_masjid.luas)
+            data_masjid.latitude = request_data.get("latitude", data_masjid.latitude)
+            data_masjid.longitude = request_data.get("longitude", data_masjid.longitude)
 
             # Save the updated object
             data_masjid.save()
