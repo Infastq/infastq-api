@@ -182,9 +182,18 @@ def check_out_of_range(request):
     
     # threshold 2 km
     if distance > 2:
-        return JsonResponse({"warning": "Kotak amal di luar jangkauan", "distance" : distance}, status=status.HTTP_200_OK)
+        return JsonResponse({"out_of_range": False, "warning": "Kotak amal di luar jangkauan", "distance" : distance}, status=status.HTTP_200_OK)
     else:
-        return JsonResponse({"distance": distance}, status=status.HTTP_200_OK)
+        return JsonResponse({"out_of_range": True, "distance": distance}, status=status.HTTP_200_OK)
+    
+@api_view(['GET','POST'])
+def location_masjid(request):
+    if request.method == 'POST':
+        request_data = json.loads(request.body.decode('utf-8')).get('python')
+        jsonResp = {
+            "latitude": request_data["latitude"],
+            "longitude": request_data["longitude"]
+        }
 
 def index(request):
     return render(request, 'index.html')
