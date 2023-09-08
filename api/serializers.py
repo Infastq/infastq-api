@@ -11,3 +11,7 @@ class WifiSerializer(serializers.ModelSerializer):
         model = Wifi
         fields = '__all__'
 
+class MasjidSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Masjid
+        fields = '__all__'
