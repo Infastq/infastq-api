@@ -197,9 +197,9 @@ def location_masjid(request):
                 new_masjid_record = serializer.save()
                 serialized_masjid = serializers.MasjidSerializer(new_masjid_record).data
 
-                serialized_masjid.luas = serialized_masjid.luas.astype(float)
-                serialized_masjid.latitude = serialized_masjid.latitude.astype(float)
-                serialized_masjid.longitude = serialized_masjid.longitude.astype(float)
+                serialized_masjid.luas = float(serialized_masjid.luas)
+                serialized_masjid.latitude = float(serialized_masjid.latitude)
+                serialized_masjid.longitude = float(serialized_masjid.longitude)
 
                 jsonResp = {
                     "status": "success",
@@ -229,9 +229,10 @@ def location_masjid(request):
         try:
             data_masjid = models.Masjid.objects.all()
             serialized_masjid = serializers.MasjidSerializer(data_masjid, many=True).data
-            serialized_masjid.luas = serialized_masjid.luas.astype(float)
-            serialized_masjid.latitude = serialized_masjid.latitude.astype(float)
-            serialized_masjid.longitude = serialized_masjid.longitude.astype(float)
+            serialized_masjid.luas = float(serialized_masjid.luas)
+            serialized_masjid.latitude = float(serialized_masjid.latitude)
+            serialized_masjid.longitude = float(serialized_masjid.longitude)
+
 
             jsonResp = {
                 "status": "success",
@@ -253,9 +254,9 @@ def location_masjid_by_id(request, id):
         try:
             data_masjid = models.Masjid.objects.get(id=id)
             serialized_masjid = serializers.MasjidSerializer(data_masjid).data
-            serialized_masjid.luas = serialized_masjid.luas.astype(float)
-            serialized_masjid.latitude = serialized_masjid.latitude.astype(float)
-            serialized_masjid.longitude = serialized_masjid.longitude.astype(float)
+            serialized_masjid.luas = float(serialized_masjid.luas)
+            serialized_masjid.latitude = float(serialized_masjid.latitude)
+            serialized_masjid.longitude = float(serialized_masjid.longitude)
 
             jsonResp = {
                 "status": "success",
@@ -295,6 +296,10 @@ def location_masjid_by_id(request, id):
             data_masjid.save()
 
             serialized_masjid = serializers.MasjidSerializer(data_masjid).data
+
+            serialized_masjid.luas = float(serialized_masjid.luas)
+            serialized_masjid.latitude = float(serialized_masjid.latitude)
+            serialized_masjid.longitude = float(serialized_masjid.longitude)
 
             jsonResp = {
                 "status": "success",
