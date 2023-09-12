@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "382ecc4bd8f20473d65267ce8e4ce91f03e49d74f940c1487e38672305ca935a"
+            "sha256": "9afbc8e3c98d03d46d846107ee4a50e1e24d4b30e6ca7ed92a9b38a968eecf1f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -372,21 +372,6 @@
             "markers": "python_version >= '3.7'",
             "version": "==1.4.5"
         },
-        "mariadb": {
-            "hashes": [
-                "sha256:07c421f974dbc67e0f96013ba88083b0d72d43164a46b21118953a8cda800682",
-                "sha256:0814a59058b81f10576553b70c245a801d3ed9bb9f4de026fc8f99ffdafbb950",
-                "sha256:3d981a1ace12f10915e9871e091533ff5d491206886988e9ea33e2d82f16eb02",
-                "sha256:4cab70488fbe43eb3fca81a43b8f0fc2515a62d1159e20f918197b4496aa77a6",
-                "sha256:5116ec913fb344f8379d59145f748aaafcfbbf3ba38cc1b81b77aa65081bf08e",
-                "sha256:860743838a24124612780c7ed30cc9d24d100d8e2ea781195a088d483da56dca",
-                "sha256:8c77208b0f7cc84c5e6bd81c048a071065a49feb9c15757ad7b299d4d194f17d",
-                "sha256:9e81117c585bdb7b1221d2938e4d32fb10dec66bb42dc4eb09e0f4a6bc99b2e8",
-                "sha256:a86f46e8fdbb5a14c231586bf4632ad13a5843b36b6627d7f67936776dd07f74"
-            ],
-            "index": "pypi",
-            "version": "==1.1.7"
-        },
         "matplotlib": {
             "hashes": [
                 "sha256:070f8dddd1f5939e60aacb8fa08f19551f4b0140fab16a3669d5cd6e9cb28fc8",
@@ -433,19 +418,6 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==3.7.2"
-        },
-        "mysqlclient": {
-            "hashes": [
-                "sha256:004fe1d30d2c2ff8072f8ea513bcec235fd9b896f70dad369461d0ad7e570e98",
-                "sha256:04368445f9c487d8abb7a878e3d23e923e6072c04a6c320f9e0dc8a82efba14e",
-                "sha256:530ece9995a36cadb6211b9787f0c9e05cdab6702549bdb4236af5e9b535ed6a",
-                "sha256:5670679ff1be1cc3fef0fa81bf39f0cd70605ba121141050f02743eb878ac114",
-                "sha256:68837b6bb23170acffb43ae411e47533a560b6360c06dac39aa55700972c93b2",
-                "sha256:955dba905a7443ce4788c63fdb9f8d688316260cf60b20ff51ac3b1c77616ede",
-                "sha256:9c6b142836c7dba4f723bf9c93cc46b6e5081d65b2af807f400dda9eb85a16d0"
-            ],
-            "index": "pypi",
-            "version": "==2.2.0"
         },
         "numpy": {
             "hashes": [

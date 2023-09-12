@@ -15,8 +15,6 @@ django-cors-headers = "*"
 pillow = "*"
 requests = "*"
 xgboost = "*"
-mysqlclient = "*"
-mariadb = "*"
 
 [dev-packages]
 ipykernel = "*"
