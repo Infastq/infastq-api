@@ -3,6 +3,8 @@ import joblib
 import os
 import pandas as pd
 import xgboost as xgb
+import numpy as np
+from .ml_models.label import CustomLabelEncoder, label
 def calculate(red, green, blue):
     data = {
         'red_freq': [red],
@@ -22,4 +24,6 @@ def calculate(red, green, blue):
     # model = joblib.load(model_path)
     # result = model.predict(df)
     result = model.predict(data_matrix)
-    return result[0]
+    decoded_result = CustomLabelEncoder(label).inverse_transform(result)
+
+    return decoded_result[0]

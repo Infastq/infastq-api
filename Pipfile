@@ -15,6 +15,7 @@ django-cors-headers = "*"
 pillow = "*"
 requests = "*"
 xgboost = "*"
+openpyxl = "*"
 
 [dev-packages]
 ipykernel = "*"
