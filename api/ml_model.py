@@ -24,6 +24,6 @@ def calculate(red, green, blue):
     # model = joblib.load(model_path)
     # result = model.predict(df)
     result = model.predict(data_matrix)
-    decoded_result = CustomLabelEncoder(label).inverse_transform(result[0])
+    decoded_result = CustomLabelEncoder(label).inverse_transform(result)
 
     return decoded_result[0]
