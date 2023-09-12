@@ -13,7 +13,6 @@ def calculate(red, green, blue):
         'r-g': [red-green],
         'r-b':[red-blue],
         'g-b':[green-blue],
-        'rgb':[red*green*blue],
         'r+g+b':[red+green+blue]
     }
     df = pd.DataFrame(data=data)
