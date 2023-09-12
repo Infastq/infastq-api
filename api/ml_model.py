@@ -22,7 +22,7 @@ def calculate(red, green, blue):
     model_path = os.path.join(module_dir, 'ml_models', 'xgboost_model.bin')
     model = xgb.Booster(model_file=model_path)
     model_json = os.path.join(module_dir, 'ml_models', 'xgboost_model.json')
-    model = xgb.Booster(model_str=model_json)
+    model = xgb.Booster(model_file=model_json)
 
     # model = joblib.load(model_path)
     # result = model.predict(df)
