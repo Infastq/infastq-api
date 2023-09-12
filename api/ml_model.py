@@ -5,9 +5,9 @@ import pandas as pd
 
 def calculate(red, green, blue):
     data = {
-        'Red Freq': [red],
-        'Green Freq': [green],
-        'Blue Freq': [blue],
+        'red_freq': [red],
+        'green_freq': [green],
+        'blue_freq': [blue],
         'r-g': [abs(red-green)],
         'r-b':[abs(red-blue)],
         'g-b':[abs(green-blue)]
