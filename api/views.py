@@ -64,7 +64,7 @@ def calculate(request):
     except Exception as e:
         jsonResp = {
             'status':'error',
-            'message':str(e),
+            'message':f"{str(e)}\n{traceback.format_exc()}",
             'uang_record': None
         }
     return JsonResponse(jsonResp)
