@@ -13,7 +13,6 @@ def calculate(red, green, blue):
         'r-g': [red-green],
         'r-b':[red-blue],
         'g-b':[green-blue],
-        'r+g+b':[red+green+blue]
     }
     df = pd.DataFrame(data=data)
     module_dir = os.path.dirname(__file__)
