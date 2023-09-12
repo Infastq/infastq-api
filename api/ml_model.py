@@ -2,7 +2,7 @@
 import joblib
 import os
 import pandas as pd
-
+import xgboost as xgb
 def calculate(red, green, blue):
     data = {
         'red_freq': [red],
@@ -16,7 +16,9 @@ def calculate(red, green, blue):
     module_dir = os.path.dirname(__file__)
 
     # Construct the path to the model.joblib file
-    model_path = os.path.join(module_dir, 'ml_models', 'model.joblib')
-    model = joblib.load(model_path)
+    # model_path = os.path.join(module_dir, 'ml_models', 'model.joblib')
+    model_path = os.path.join(module_dir, 'ml_models', 'xgboost_model.bin')
+    model = xgb.Booster(model_file=model_path)
+    # model = joblib.load(model_path)
     result = model.predict(df)
     return result[0]
