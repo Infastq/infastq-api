@@ -10,9 +10,9 @@ def calculate(red, green, blue):
         'red_freq': [red],
         'green_freq': [green],
         'blue_freq': [blue],
-        'r-g': [abs(red-green)],
-        'r-b':[abs(red-blue)],
-        'g-b':[abs(green-blue)]
+        'r-g': [red-green],
+        'r-b':[red-blue],
+        'g-b':[green-blue]
     }
     df = pd.DataFrame(data=data)
     module_dir = os.path.dirname(__file__)
