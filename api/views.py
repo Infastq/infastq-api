@@ -136,8 +136,8 @@ def convert_image_to_r5g6b5(request, id1, id2):
     else:
         return JsonResponse({"error": "Invalid request method"}, status=405)
     
-latitude = -6.878934
-longitude = 107.612385
+latitude = -7.9527936
+longitude = 112.6301696
   
 @api_view(['POST', 'GET'])
 def gps_data(request):
