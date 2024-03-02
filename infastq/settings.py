@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,14 +79,7 @@ WSGI_APPLICATION = 'infastq.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'PAScZ4b9598ZoKnAcplI',
-        'HOST': 'containers-us-west-78.railway.app',  # Change this to your PostgreSQL server's host if it's not local
-        'PORT': '5539',       # Default PostgreSQL port
-    }
+    'default': dj_database_url.config(default='postgres://postgres.orxqyidaoulhnzfieekp:FurryIndonesia911!@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres')
 }
 
 
