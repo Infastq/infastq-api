@@ -79,7 +79,14 @@ WSGI_APPLICATION = 'infastq.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://postgres.orxqyidaoulhnzfieekp:FurryIndonesia911!@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres')
+    'default': {
+        'ENGINE': 'django_cockroachdb',
+        'NAME': 'infastq',
+        'USER': 'abrahamsamudra',
+        'PASSWORD': 'HKxomRx5AcnOr6Y9lHTIzQ',
+        'HOST': 'smart-dormitory-7433.8nk.gcp-asia-southeast1.cockroachlabs.cloud',
+        'PORT': '26257',
+    },
 }
 
 
